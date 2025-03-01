@@ -1,11 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { AlertCircle } from "lucide-react";
 
 interface SettingsDialogProps {
   open: boolean;
@@ -25,6 +26,24 @@ export function SettingsDialog({ open, onOpenChange }: SettingsDialogProps) {
   }, []);
 
   const handleSave = () => {
+    if (!apiKey.trim()) {
+      toast({
+        title: "API Key Required",
+        description: "Please enter your OpenAI API key.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!apiKey.startsWith("sk-")) {
+      toast({
+        title: "Invalid API Key",
+        description: "OpenAI API keys typically start with 'sk-'.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     // Save API key to localStorage
     localStorage.setItem("openai-api-key", apiKey);
     toast({
@@ -39,6 +58,9 @@ export function SettingsDialog({ open, onOpenChange }: SettingsDialogProps) {
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Settings</DialogTitle>
+          <DialogDescription>
+            Configure your API keys for generating notes
+          </DialogDescription>
         </DialogHeader>
         <div className="space-y-4 py-4">
           <div className="space-y-2">
@@ -50,9 +72,21 @@ export function SettingsDialog({ open, onOpenChange }: SettingsDialogProps) {
               value={apiKey}
               onChange={(e) => setApiKey(e.target.value)}
             />
-            <p className="text-sm text-muted-foreground">
-              Your API key is stored locally in your browser and never sent to our servers.
-            </p>
+            <div className="flex items-start gap-2 text-sm text-muted-foreground">
+              <AlertCircle className="h-4 w-4 mt-0.5 flex-shrink-0" />
+              <p>
+                Your API key is stored locally in your browser and never sent to our servers.
+                You can get an API key from the{" "}
+                <a 
+                  href="https://platform.openai.com/api-keys" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-primary underline underline-offset-2"
+                >
+                  OpenAI dashboard
+                </a>.
+              </p>
+            </div>
           </div>
           <Button onClick={handleSave} className="w-full">Save Settings</Button>
         </div>
