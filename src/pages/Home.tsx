@@ -1,8 +1,7 @@
-import { YoutubeForm } from "@/components/youtube-form";
-import { Header } from "@/components/header";
-import { Card } from "@/components/ui/card";
-import { CheckCircle2, Github } from "lucide-react";
-import Link from "next/link";
+import { YoutubeForm } from "../components/youtube-form";
+import { Header } from "../components/header";
+import { Card } from "../components/ui/card";
+import { CheckCircle2 } from "lucide-react";
 
 export default function Home() {
   return (
@@ -14,18 +13,6 @@ export default function Home() {
           <p className="text-muted-foreground mb-4 text-center">
             Extract key points from YouTube videos using AI and export them in various formats
           </p>
-          
-          <div className="flex justify-center mb-6">
-            <Link 
-              href="https://github.com/xKarinSan" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <Github className="h-4 w-4" />
-              <span>Created by xKarinSan</span>
-            </Link>
-          </div>
           
           <Card className="p-4 mb-8 border border-border">
             <h2 className="text-lg font-medium mb-3">How to use VidScribe:</h2>

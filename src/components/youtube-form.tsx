@@ -1,17 +1,15 @@
-"use client";
-
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2, Youtube } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
-import { useToast } from "@/hooks/use-toast";
-import { extractVideoId, generateNotes } from "@/lib/youtube-utils";
-import { NotesEditor } from "@/components/notes-editor";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "./ui/form";
+import { useToast } from "../hooks/use-toast";
+import { extractVideoId, generateNotes } from "../lib/youtube-utils";
+import { NotesEditor } from "./notes-editor";
+import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 import { AlertCircle } from "lucide-react";
 
 const formSchema = z.object({

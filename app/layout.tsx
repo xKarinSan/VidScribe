@@ -7,7 +7,7 @@ import { Toaster } from '@/components/ui/toaster';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'YouTube Notes',
+  title: 'VidScribe',
   description: 'Extract and edit notes from YouTube videos',
 };
 
