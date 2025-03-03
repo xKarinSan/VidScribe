@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
 import { Settings, Github } from "lucide-react";
@@ -13,11 +12,11 @@ export function Header() {
   return (
     <header className="border-b">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-        <Link href="/" className="font-semibold text-xl">
+        <a href="/" className="font-semibold text-xl">
           VidScribe
-        </Link>
+        </a>
         <div className="flex items-center gap-2">
-          <Link 
+          <a 
             href="https://github.com/xKarinSan/VidScribe" 
             target="_blank" 
             rel="noopener noreferrer"
@@ -25,7 +24,7 @@ export function Header() {
           >
             <Github className="h-4 w-4" />
             <span className="hidden sm:inline">GitHub</span>
-          </Link>
+          </a>
           <ModeToggle />
           <Button variant="ghost" size="icon" onClick={() => setSettingsOpen(true)}>
             <Settings className="h-5 w-5" />

@@ -8,8 +8,8 @@ export function extractVideoId(url: string): string | null {
 // Function to fetch video metadata using YouTube API
 async function fetchVideoMetadata(videoId: string): Promise<{ title: string; channelTitle: string }> {
   try {
-    // Access the API key from Next.js environment variables
-    const apiKey = process.env.YOUTUBE_API_KEY;
+    // Access the API key from environment variables
+    const apiKey = import.meta.env.VITE_YOUTUBE_API_KEY;
     
     if (!apiKey) {
       throw new Error("YouTube API key is not configured");
